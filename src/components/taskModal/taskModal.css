@@ -1,0 +1,269 @@
+.task-modal__backdrop {
+  display: grid;
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  padding: 22px;
+  overflow-y: auto;
+  background: rgb(19 32 27 / 45%);
+  place-items: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.task-modal {
+  width: min(100%, 620px);
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid #e1e5e3;
+  border-radius: 25px;
+  color: #1c2823;
+  background: #f7f8f7;
+  box-shadow: 0 28px 80px rgb(10 27 20 / 28%);
+  animation: task-modal-enter 220ms ease-out both;
+}
+
+.task-modal__brand {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 22px;
+}
+
+.task-modal__brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.task-modal__heading h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  letter-spacing: -0.04em;
+}
+
+.task-modal__heading p {
+  margin: 8px 0 0;
+  color: #737b77;
+  font-size: 0.9rem;
+}
+
+.task-modal__form {
+  display: grid;
+  margin-top: 28px;
+  gap: 20px;
+}
+
+.task-modal__field {
+  display: grid;
+  gap: 8px;
+}
+
+.task-modal__field > span {
+  color: #3b4641;
+  font-size: 0.81rem;
+  font-weight: 700;
+}
+
+.task-modal__field input,
+.task-modal__field textarea {
+  width: 100%;
+  border: 1px solid #d8ddda;
+  border-radius: 14px;
+  outline: none;
+  color: #18211d;
+  background: #fff;
+  transition: border-color 170ms ease, box-shadow 170ms ease;
+}
+
+.task-modal__field input {
+  height: 52px;
+  padding: 0 16px;
+}
+
+.task-modal__field textarea {
+  min-height: 170px;
+  max-height: 300px;
+  padding: 15px 16px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.task-modal__field input::placeholder,
+.task-modal__field textarea::placeholder {
+  color: #a1a7a4;
+}
+
+.task-modal__field input:focus,
+.task-modal__field textarea:focus {
+  border-color: #4e9b7c;
+  box-shadow: 0 0 0 4px rgb(46 139 108 / 11%);
+}
+
+.task-modal__actions {
+  display: flex;
+  margin-top: 7px;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.task-modal__button {
+  min-width: 112px;
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: border-color 170ms ease, color 170ms ease, background 170ms ease;
+}
+
+.task-modal__button--cancel {
+  border: 1px solid #d3dad6;
+  color: #58645e;
+  background: #eef1ef;
+}
+
+.task-modal__button--cancel:hover {
+  border-color: #bdc8c2;
+  color: #303c36;
+  background: #e5eae7;
+}
+
+.task-modal__button--confirm {
+  border: 1px solid #176f55;
+  color: #fff;
+  background: #176f55;
+}
+
+.task-modal__button--confirm:hover {
+  border-color: #125c47;
+  background: #125c47;
+}
+
+.task-modal__button--confirm:disabled {
+  border-color: #bdc7c2;
+  color: #7d8983;
+  background: #dbe1de;
+  cursor: not-allowed;
+}
+
+.task-modal__button--confirm:disabled:hover {
+  border-color: #bdc7c2;
+  background: #dbe1de;
+}
+
+.task-modal__button:focus-visible {
+  outline: 2px solid #2e8b6c;
+  outline-offset: 3px;
+}
+
+@keyframes task-modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .task-modal__backdrop {
+    padding: 14px;
+  }
+
+  .task-modal {
+    padding: 24px 20px;
+    border-radius: 21px;
+  }
+
+  .task-modal__field textarea {
+    min-height: 150px;
+  }
+
+  .task-modal__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .task-modal__button {
+    min-width: 0;
+    width: 100%;
+    padding: 0 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .task-modal__field input,
+  .task-modal__field textarea,
+  .task-modal__button {
+    transition: none;
+  }
+
+  .task-modal {
+    animation: none;
+  }
+}
+
+[data-theme='dark'] .task-modal__backdrop {
+  background: rgb(3 7 5 / 68%);
+}
+
+[data-theme='dark'] .task-modal {
+  border-color: #2b3a33;
+  color: #e5ede8;
+  background: #121b17;
+  box-shadow: 0 28px 80px rgb(0 0 0 / 48%);
+}
+
+[data-theme='dark'] .task-modal__heading p {
+  color: #98a59f;
+}
+
+[data-theme='dark'] .task-modal__field > span {
+  color: #c5d0ca;
+}
+
+[data-theme='dark'] .task-modal__field input,
+[data-theme='dark'] .task-modal__field textarea {
+  border-color: #304139;
+  color: #e7eee9;
+  background: #0c1310;
+}
+
+[data-theme='dark'] .task-modal__field input::placeholder,
+[data-theme='dark'] .task-modal__field textarea::placeholder {
+  color: #64716b;
+}
+
+[data-theme='dark'] .task-modal__button--cancel {
+  border-color: #34433c;
+  color: #b6c2bc;
+  background: #26312c;
+}
+
+[data-theme='dark'] .task-modal__button--cancel:hover {
+  border-color: #465a50;
+  color: #e2eae6;
+  background: #303d37;
+}
+
+[data-theme='dark'] .task-modal__button--confirm {
+  border-color: #285f4b;
+  background: #174d3b;
+}
+
+[data-theme='dark'] .task-modal__button--confirm:hover {
+  border-color: #34745b;
+  background: #1d5e48;
+}
+
+[data-theme='dark'] .task-modal__button--confirm:disabled,
+[data-theme='dark'] .task-modal__button--confirm:disabled:hover {
+  border-color: #35433d;
+  color: #74817b;
+  background: #29332f;
+}
